@@ -16,6 +16,11 @@ class Robot
   def say_name
     system("say My name is #{name}")
   end
+
+  def method_missing(m, *args, &block)
+    puts "#{m} does not compute"
+    #system('say Does not compute')
+  end
 end
 #Q4,Q5
 class BendingUnit < Robot
@@ -48,27 +53,29 @@ our_class.each do |student|
   robots << name
 end
 
-robots.each do |robot|
-  puts robot.inspect
-end
+# robots.each do |robot|
+#   puts robot.inspect
+# end
 
 our_class.collect do |student|
   name = Robot.new(student, "#" + get_color, rand(10..70), rand(90..1000))
   robots2 << name
 end
 
-robots2.each do |robot2|
-  puts robot2.inspect
-end
+# robots2.each do |robot2|
+#   puts robot2.inspect
+# end
 
 #EPIC
 classes = [Robot, BendingUnit, ActorUnit]
 
-puts classes.sample
+#puts classes.sample
 
 robots3 = []
 our_class.each do |student|
   name = classes.sample.new(student)
+  # Lengendary
+  name.elbow
   robots3 << name
 end
 
